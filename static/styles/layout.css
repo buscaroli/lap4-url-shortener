@@ -1,0 +1,11 @@
+nav {
+    width: 100%;
+    font-size: 2em;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: burlywood;
+}
+
+* {
+    background-color: orange;
+}

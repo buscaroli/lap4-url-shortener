@@ -1,0 +1,12 @@
+{% extends "layout.html" %} {% block content %}
+<form id="url-shortener" method="POST">
+    <input
+        type="text"
+        id="url-input"
+        name="url-input"
+        placeholder="Enter email for receipt"
+    />
+    <input type="submit" id="url-submit" />
+    <input type="hidden" name="result" value="{{result}}" />
+</form>
+{% endblock %}
