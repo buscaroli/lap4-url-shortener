@@ -3,6 +3,7 @@ from flask import Flask, jsonify, render_template, redirect, request
 from flask_cors import CORS 
 from werkzeug.exceptions  import NotFound, BadRequest, InternalServerError
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 
 app = Flask(__name__)
@@ -13,7 +14,9 @@ CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 # initialise the database
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
+base_url = 'http://localhost:5000/'
 
 class Address(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -29,7 +32,7 @@ class Address(db.Model):
 @app.route('/', methods=["GET", "POST"])
 def home():
     if request.method == "POST":
-        base_url = 'http://localhost:5000/'
+        
         #original_url = request.form["url"]
         short_url = base_url + str(uuid.uuid4())[:8]
         print('*'*10)
