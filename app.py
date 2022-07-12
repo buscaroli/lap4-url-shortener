@@ -20,7 +20,6 @@ class Address(db.Model):
     url = db.Column(db.String(500), nullable=False)
     short_url = db.Column(db.String(500), nullable=False)
     
-
     def __str__(self):
         return f"<Address {self.id}>"
 
