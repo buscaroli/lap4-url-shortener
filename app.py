@@ -1,5 +1,5 @@
 import uuid
-from flask import Flask, jsonify, render_template, redirect, request
+from flask import Flask, jsonify, render_template, redirect, request, url_for
 from flask_cors import CORS 
 from werkzeug.exceptions  import NotFound, BadRequest, InternalServerError
 from flask_sqlalchemy import SQLAlchemy
@@ -33,17 +33,27 @@ class Address(db.Model):
 def home():
     if request.method == "POST":
         
-        #original_url = request.form["url"]
-        short_url = base_url + str(uuid.uuid4())[:8]
+        original_url = request.form["url-input"]
+        shortened_url = base_url + str(uuid.uuid4())[:8]
         print('*'*10)
-        print(short_url)
+        print(original_url)
+        print(shortened_url)
+
+        new_url = Address(url=original_url, short_url=shortened_url)
+        db.session.add(new_url)
+        db.session.commit()
         # generate url
         # save to database
         # refer back to homepage
+        return render_template('home.html', result=shortened_url)
     else:
-        # return render_template('index.html', short_url='qwe123asd')
-        return {"url": "qwe123asd"}
+        return render_template('home.html')
+        # return {"url": "qwe123asd"}
 
+# @app.route('/<surl>')
+# def refer(surl):
+#     url = db.session.query(surl)
+#     return redirect(url_for(surl))
 
 # error handling
 
