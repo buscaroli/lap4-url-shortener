@@ -4,7 +4,6 @@ const refreshButton = document.getElementById('refresh');
 const URLInput = document.getElementById('url-input');
 
 form.addEventListener('submit', (e) => {
-    console.log(URLInput.value);
     localStorage.setItem('showUrl', true);
     localStorage.setItem('input', URLInput.value);
 });
