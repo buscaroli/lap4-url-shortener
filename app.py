@@ -33,29 +33,32 @@ class Address(db.Model):
 @app.route('/', methods=["GET", "POST"])
 def home():
     if request.method == "POST":
+        original_url = request.form["url-input"] 
+        stored_short_url = return_url_if_exists(original_url)
         
-        original_url = request.form["url-input"]
-        shortened_url = '' + str(uuid.uuid4())[:8]
-        print('*'*10)
-        print(original_url)
-        print(shortened_url)
+        if stored_short_url:
+            return render_template('home.html', original=original_url, result=stored_short_url)
+        else:
+            shortened_url = '' + str(uuid.uuid4())[:8]
+            print('*'*10)
+            print(original_url)
+            print(shortened_url)
 
+            if not original_url:
+                flash('The URL is required!')
+                return redirect(url_for('home'))
 
-        if not original_url:
-            flash('The URL is required!')
-            return redirect(url_for('home'))
-
-        new_url = Address(url=original_url, short_url=shortened_url)
-        db.session.add(new_url)
-        db.session.commit()
-        # generate url
-        # save to database
-        # refer back to homepage
-        app_path = request.host_url
-        short_url_with_path = f"{app_path}{shortened_url}"
-        print('* '*10)
-        print(short_url_with_path)
-        return render_template('home.html', original=original_url, result=short_url_with_path)
+            new_url = Address(url=original_url, short_url=shortened_url)
+            db.session.add(new_url)
+            db.session.commit()
+            # generate url
+            # save to database
+            # refer back to homepage
+            app_path = request.host_url
+            short_url_with_path = f"{app_path}{shortened_url}"
+            print('* '*10)
+            print(short_url_with_path)
+            return render_template('home.html', original=original_url, result=short_url_with_path)
     else:
         return render_template('home.html')
         # return {"url": "qwe123asd"}
@@ -89,17 +92,24 @@ def refer(surl):
 
 @app.errorhandler(NotFound)
 def handle_404(err):
+    flash('There was nothing to see there!')
     return  render_template('errors/404.html'), 404
 
 @app.errorhandler(BadRequest)
 def handle_400(err):
-    return render_template('errors/405.html'), 400
+    return render_template('home.html'), 400
 
 @app.errorhandler(InternalServerError)
 def handle_500(err):
     return render_template('errors/500.html'), 500
 
-# remove debugging mode once ready for deployment 
+# Utility functions
+def return_url_if_exists(url_data):
+    try:
+        address_in_db = db.session.query(Address).filter_by(url=url_data).one()
+        return address_in_db.short_url   
+    except:
+        return False
 
 if __name__ == "__main__":
     app.run(debug=True)
