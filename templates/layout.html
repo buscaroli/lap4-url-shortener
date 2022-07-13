@@ -5,22 +5,30 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>url-shortener</title>
-        <!-- <link
+        <link
             rel="shortcut icon"
             href="{{ url_for('static', filename='img/favicon.ico') }}"
         />
         <link
             rel="stylesheet"
             href="{{ url_for('static', filename='/styles/layout.css') }}"
-        /> -->
+        />
 
-        <link rel="shortcut icon" href="../static/img/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@900&family=Poppins&display=swap"
+            rel="stylesheet"
+        />
 
-        <link rel="stylesheet" href="../static/styles/layout.css" />
+        <!-- <link rel="shortcut icon" href="../static/img/favicon.ico" />
+
+        <link rel="stylesheet" href="../static/styles/layout.css" /> -->
     </head>
     <body>
         <nav><a href="/">Home</a></nav>
         <main>{% block content %} {% endblock %}</main>
         <footer>&copy; url-shortener</footer>
+        <script src="{{ url_for('static', filename='/js/home.js') }}"></script>
     </body>
 </html>

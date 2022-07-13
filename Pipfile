@@ -10,6 +10,8 @@ flask-sqlalchemy = "*"
 flask-migrate = "*"
 
 [dev-packages]
+pytest = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.9"
@@ -17,3 +19,5 @@ python_version = "3.9"
 [scripts]
 start = "gunicorn app:app"
 dev = "bash -c \"export FLASK_DEBUG=1 && export FLASK_ENV='development' && FLASK_APP=app.py && flask run\" "
+test = "pytest ."
+coverage = "pytest --cov-report term-missing --cov=."

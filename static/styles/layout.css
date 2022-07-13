@@ -1,11 +1,62 @@
+body {
+    background-image: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0.7)
+        ),
+        url('../img/landscape.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    text-align: center;
+    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
 nav {
     width: 100%;
     font-size: 2em;
     display: flex;
     justify-content: space-evenly;
-    background-color: burlywood;
+    background-color: #fbeec1;
+    top: 0;
 }
 
-* {
-    background-color: orange;
+a {
+    text-decoration: none;
+    padding: 10px;
+    color: #8d8741;
+}
+
+h1 {
+    margin: 50px auto 40px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 50px;
+}
+
+input {
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+footer {
+    position: fixed;
+    color: #8d8741;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #fbeec1;
+
+    text-align: center;
+}
+
+.short-url {
+    visibility: hidden;
 }
