@@ -41,7 +41,7 @@ def home():
         # save to database
         # refer back to homepage
     else:
-        # return render_template('index.html', short_url='qwe123asd')
+        return render_template('home.html', result='qwe123asd')
         return {"url": "qwe123asd"}
 
 

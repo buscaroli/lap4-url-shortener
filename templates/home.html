@@ -1,12 +1,18 @@
 {% extends "layout.html" %} {% block content %}
+<h1>Free URL-shortener</h1>
+<p>
+    Type here a link you want to shorten. Hit 'Shorten URL' button - that
+    creates a memorable and short URL for your usage.
+</p>
 <form id="url-shortener" method="POST">
     <input
         type="text"
         id="url-input"
         name="url-input"
-        placeholder="Enter email for receipt"
+        placeholder="Enter URL"
+        style="width: 500px"
     />
-    <input type="submit" id="url-submit" />
+    <input type="submit" id="url-submit" value="Shorten URL" />
     <input type="hidden" name="result" value="{{result}}" />
 </form>
 {% endblock %}
