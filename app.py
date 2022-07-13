@@ -52,7 +52,7 @@ def home():
         # save to database
         # refer back to homepage
         app_path = request.host_url
-        short_url_with_path = f"app_path{shortened_url}"
+        short_url_with_path = f"{app_path}{shortened_url}"
         print('* '*10)
         print(short_url_with_path)
         return render_template('home.html', original=original_url, result=short_url_with_path)
