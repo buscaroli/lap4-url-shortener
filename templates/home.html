@@ -13,6 +13,10 @@
         style="width: 500px"
     />
     <input type="submit" id="url-submit" value="Shorten URL" />
-    <input type="hidden" name="result" value="{{result}}" />
+    <input type="button" id="refresh" value="Refresh" />
+    <p id="short-url-output" class="short-url">
+        Your shortened URL is: {{result}}
+    </p>
+    <!-- <input type="hidden" name="result" value="Hi, I'm here!!!" /> -->
 </form>
 {% endblock %}

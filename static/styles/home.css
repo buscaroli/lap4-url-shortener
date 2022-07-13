@@ -1,10 +1,4 @@
-input {
-    outline: none;
-    border: none;
-    background-color: aqua;
-}
-
-input,
+/* input,
 input::placeholder {
     font: 20px/3 sans-serif;
-}
+} */
