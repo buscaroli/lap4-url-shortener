@@ -51,7 +51,7 @@ def home():
         # generate url
         # save to database
         # refer back to homepage
-        short_url_with_path = f"http://127.0.0.1:5000/{shortened_url}"
+        short_url_with_path = f"https://alimat.herokuapp.com/{shortened_url}"
         return render_template('home.html', original=original_url, result=short_url_with_path)
     else:
         return render_template('home.html')
