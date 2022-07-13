@@ -89,15 +89,15 @@ def refer(surl):
 
 @app.errorhandler(NotFound)
 def handle_404(err):
-    return {'message': f'Oops! {err}'}, 404
+    return  render_template('errors/404.html'), 404
 
 @app.errorhandler(BadRequest)
 def handle_400(err):
-    return {'message': f'Oops! {err}'}, 400
+    return render_template('errors/405.html'), 400
 
 @app.errorhandler(InternalServerError)
 def handle_500(err):
-    return {'message': f"It's not you, it's us"}, 500
+    return render_template('errors/500.html'), 500
 
 # remove debugging mode once ready for deployment 
 

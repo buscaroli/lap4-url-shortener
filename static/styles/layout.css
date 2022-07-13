@@ -60,3 +60,13 @@ footer {
 .short-url {
     visibility: hidden;
 }
+
+#about a {
+    padding: 0;
+}
+#about {
+    text-align: justify;
+    padding: 1rem;
+    max-width: 350px;
+    margin: 0 auto;
+}
