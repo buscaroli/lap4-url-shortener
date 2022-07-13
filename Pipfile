@@ -9,6 +9,7 @@ flask-cors = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
 gunicorn = "*"
+importlib-metadata = "*"
 
 [dev-packages]
 pytest = "*"
