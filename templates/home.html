@@ -1,5 +1,14 @@
 {% extends "layout.html" %} {% block content %}
 <h1>Free URL-shortener</h1>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endwith %}
 <p>
     Type here a link you want to shorten. Hit 'Shorten URL' button - that
     creates a memorable and short URL for your usage.
@@ -16,7 +25,7 @@
     <input type="submit" id="url-submit" value="Shorten URL" />
     <input type="button" id="refresh" value="Refresh" />
     <p id="short-url-output" class="short-url">
-        Your shortened URL is: {{result}}
+        Your shortened URL is: <a href="{{result}}" target="_blank">{{result}}</a>
     </p>
     <!-- <input type="hidden" name="result" value="Hi, I'm here!!!" /> -->
 </form>

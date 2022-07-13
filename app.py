@@ -1,5 +1,5 @@
 import uuid
-from flask import Flask, jsonify, render_template, redirect, request, url_for
+from flask import Flask, jsonify, flash, render_template, redirect, request, url_for
 from flask_cors import CORS 
 from werkzeug.exceptions  import NotFound, BadRequest, InternalServerError
 from flask_sqlalchemy import SQLAlchemy
@@ -16,6 +16,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 # base_url = 'http://127.0.0.1:5000/'
 
 class Address(db.Model):
@@ -38,6 +39,11 @@ def home():
         print('*'*10)
         print(original_url)
         print(shortened_url)
+
+
+        if not original_url:
+            flash('The URL is required!')
+            return redirect(url_for('home'))
 
         new_url = Address(url=original_url, short_url=shortened_url)
         db.session.add(new_url)
