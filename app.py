@@ -73,7 +73,7 @@ def refer(surl):
         url = address_entry.url
         # print('* '*10)
         # print(url)
-        return redirect('http://' + url)
+        return redirect(url)
         # print('#'*10)
         
     except:
