@@ -45,7 +45,8 @@ def home():
         # generate url
         # save to database
         # refer back to homepage
-        return render_template('home.html', result=shortened_url)
+        short_url_with_path = f"http://127.0.0.1:5000/{shortened_url}"
+        return render_template('home.html', original=original_url, result=short_url_with_path)
     else:
         return render_template('home.html')
         # return {"url": "qwe123asd"}
